@@ -3,7 +3,7 @@
  * @Date: 2020-09-08 11:34:31
  * @LastEditTime: 2020-09-08 11:36:25
  * @LastEditors: hainan dong
- * @Description: 
+ * @Description:
  * @FilePath: \ja-front-template\micro-app-main\src\micro\index.ts
  * @Code Is Everything
  */
@@ -14,7 +14,7 @@ import { message } from "ant-design-vue";
 import {
   registerMicroApps,
   addGlobalUncaughtErrorHandler,
-  start,
+  start
 } from "qiankun";
 
 // 子应用注册信息
@@ -39,7 +39,7 @@ registerMicroApps(apps, {
     NProgress.done();
     console.log("after mount", app.name);
     return Promise.resolve();
-  },
+  }
 });
 
 /**

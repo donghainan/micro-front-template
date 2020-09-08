@@ -1,26 +1,23 @@
 <template>
-<a-config-provider prefixCls="cns">
-  <section id="cns-main-app">
-    <section class="cns-menu-wrapper">
-      <main-menu :menus="menus" />
-    </section>
-    <section class="cns-frame-wrapper">
-      <!-- 主应用渲染区，用于挂载主应用路由触发的组件 -->
-      <router-view v-show="this.$route.name" />
+  <a-config-provider prefixCls="cns">
+    <section id="cns-main-app">
+      <section class="cns-menu-wrapper">
+        <main-menu :menus="menus" />
+      </section>
+      <section class="cns-frame-wrapper">
+        <!-- 主应用渲染区，用于挂载主应用路由触发的组件 -->
+        <router-view v-show="this.$route.name" />
 
-      <!-- 子应用渲染区，用于挂载子应用节点 -->
-      <section v-show="!this.$route.name" id="frame"></section>
+        <!-- 子应用渲染区，用于挂载子应用节点 -->
+        <section v-show="!this.$route.name" id="frame"></section>
+      </section>
     </section>
-  </section>
-</a-config-provider>
+  </a-config-provider>
 </template>
 
 <script lang="ts">
 // @ts-nocheck
-import {
-  Component,
-  Vue
-} from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator";
 
 import MainMenu from "@/components/menu/index.vue";
 
@@ -36,7 +33,8 @@ export default class App extends Vue {
    * title: 菜单标题
    * path: 菜单对应的路径
    */
-  menus = [{
+  menus = [
+    {
       key: "Home",
       title: "主页",
       path: "/"
@@ -60,7 +58,7 @@ export default class App extends Vue {
       key: "ReactMicroAppList",
       title: "React 列表页",
       path: "/react/list"
-    },
+    }
   ];
 }
 </script>

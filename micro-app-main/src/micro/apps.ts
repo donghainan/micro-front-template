@@ -1,12 +1,13 @@
 /*
  * @Author: hainan dong
  * @Date: 2020-09-08 11:34:53
- * @LastEditTime: 2020-09-08 14:20:32
+ * @LastEditTime: 2020-09-08 15:26:52
  * @LastEditors: hainan dong
- * @Description: 
+ * @Description:
  * @FilePath: \ja-front-template\micro-app-main\src\micro\apps.ts
  * @Code Is Everything
  */
+import actions from '@/shared/actions'
 const apps = [
   /**
    * name: 微应用名称 - 具有唯一性
@@ -19,7 +20,10 @@ const apps = [
     entry: "//localhost:3000",
     container: "#frame",
     activeRule: "/react",
-  },
+    props: {
+      token: 'asdfsdf'
+    }
+  }
   // {
   //   name: "VueMicroApp",
   //   entry: "//localhost:10200",

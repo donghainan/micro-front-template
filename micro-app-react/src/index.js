@@ -1,21 +1,33 @@
+/*
+ * @Author: hainan dong
+ * @Date: 2020-09-08 13:45:08
+ * @LastEditTime: 2020-09-08 15:10:32
+ * @LastEditors: hainan dong
+ * @Description: 
+ * @FilePath: \ja-front-template\micro-app-react\src\index.js
+ * @Code Is Everything
+ */
 import React from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
 
 import "./public-path";
 import App from "./App.jsx";
-
+import SharedModule from '@/shared'
 /**
  * 渲染函数
  * 两种情况：主应用生命周期钩子中运行 / 微应用单独启动时运行
  */
-function render() {
+function render(props = {}) {
+  // 当传入的 shared 不为空时，则重载子应用的 shared
+  console.log(props)
+  const { shared = SharedModule.getShared() } = props;
+  SharedModule.overloadShared(shared);
+
   ReactDOM.render(<App />, document.getElementById("root"));
 }
-console.log(window.__POWERED_BY_QIANKUN__)
 // 独立运行时，直接挂载应用
 if (!window.__POWERED_BY_QIANKUN__) {
-  console.log("我是独立运行的")
   render();
 }
 

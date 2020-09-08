@@ -3,7 +3,7 @@
  * @Date: 2020-09-08 11:22:47
  * @LastEditTime: 2020-09-08 11:41:55
  * @LastEditors: hainan dong
- * @Description: 
+ * @Description:
  * @FilePath: \ja-front-template\micro-app-main\src\routes\index.ts
  * @Code Is Everything
  */
@@ -18,7 +18,7 @@ const routes = [
      */
     path: "/",
     name: "Home",
-    component: Home,
+    component: Home
   }
 ];
 

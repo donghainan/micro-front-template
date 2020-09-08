@@ -1,30 +1,29 @@
 <template>
-<section class="cns-main-menu">
-  <a-menu mode="inline" theme="dark" :selectedKeys="[selectKey]">
-    <a-menu-item v-for="item in menus" :key="item.key" @click="changeMenu(item)">
-      <router-link :to="{path: item.path }">
-        <a-icon v-if="item.icon" :type="item.icon" />
-        <span>{{item.title}}</span>
-      </router-link>
-    </a-menu-item>
-  </a-menu>
-</section>
+  <section class="cns-main-menu">
+    <a-menu mode="inline" theme="dark" :selectedKeys="[selectKey]">
+      <a-menu-item
+        v-for="item in menus"
+        :key="item.key"
+        @click="changeMenu(item)"
+      >
+        <router-link :to="{ path: item.path }">
+          <a-icon v-if="item.icon" :type="item.icon" />
+          <span>{{ item.title }}</span>
+        </router-link>
+      </a-menu-item>
+    </a-menu>
+  </section>
 </template>
 
 <script lang="ts">
-import {
-  Component,
-  Vue,
-  Prop,
-  Watch
-} from "vue-property-decorator";
+import { Component, Vue, Prop, Watch } from "vue-property-decorator";
 
 type MenuItem = {
   key: string;
   title: string;
-  icon ? : string;
+  icon?: string;
   path: string;
-  children ? : MenuItem[];
+  children?: MenuItem[];
 };
 
 @Component
@@ -40,7 +39,7 @@ export default class Menu extends Vue {
     this._initMenus();
   }
 
-  selectKey: string = "";
+  selectKey = "";
 
   created() {
     this._initMenus();
@@ -52,9 +51,7 @@ export default class Menu extends Vue {
       this.$route.path
     ) as MenuItem;
     if (!currentMenu) return;
-    const {
-      key
-    } = currentMenu;
+    const { key } = currentMenu;
     this.selectKey = key;
   }
 
@@ -64,9 +61,7 @@ export default class Menu extends Vue {
   ): MenuItem | null {
     for (let i = 0; i < menus.length; i++) {
       const menu = menus[i];
-      const {
-        path
-      } = menu;
+      const { path } = menu;
       if (path === currentPath) return menu;
 
       const currentMenu = this._findCurrentMenu(
@@ -82,9 +77,7 @@ export default class Menu extends Vue {
    * 切换菜单
    */
   private changeMenu(item: MenuItem) {
-    const {
-      key
-    } = item;
+    const { key } = item;
     this.selectKey = key;
   }
 }
